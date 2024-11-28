@@ -1,0 +1,15 @@
+{
+    "name": "yudan/crud",
+    "autoload": {
+        "psr-4": {
+            "Yudan\\Crud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Amcu",
+            "email": "yudangblu@gmail.com"
+        }
+    ],
+    "require": {}
+}
