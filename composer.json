@@ -2,7 +2,7 @@
     "name": "yudan/crud",
     "autoload": {
         "psr-4": {
-            "Yudan\\Crud\\": "src/"
+            "App\\": "src/app/"
         }
     },
     "authors": [

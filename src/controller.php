@@ -6,8 +6,10 @@ class Controller {
     }
 
     public function Models($Model) {
-        require_once '../crud/schema/' . $Model . '.php';
+        require_once(__DIR__ . '/../schema/') . $Model . '.php';
         return new $Model;
     }
+
+    
 }
 ?>
