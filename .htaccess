@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Abaikan file atau folder yang ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Arahkan semua permintaan ke index.php
+    RewriteRule ^(.*)$ index.php [L,QSA]
+</IfModule>

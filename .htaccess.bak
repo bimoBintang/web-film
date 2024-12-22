@@ -1,0 +1,23 @@
+# Aktifkan mod_rewrite jika tersedia
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Tentukan base URL jika aplikasi berada di dalam folder 'crud'
+    RewriteBase /crud/
+
+    # Abaikan jika file atau direktori benar-benar ada
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Abaikan jika permintaan adalah untuk file PHP tertentu (seperti sign-in.php)
+    RewriteCond %{REQUEST_URI} !^/crud/src/app/views/Auth/sign-in.php$
+
+    # Arahkan semua permintaan ke src/index.php
+    RewriteRule ^(.*)$ /crud/src/index.php [L]
+</IfModule>
+
+# Pastikan izin akses ke folder dan file aman
+<Directory "D:/xampp/htdocs/crud/">
+    AllowOverride All
+    Require all granted
+</Directory>
