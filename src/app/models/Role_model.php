@@ -7,7 +7,7 @@ class Role_model {
         $this->conn = $conn;
     }
 
-    // Cari role berdasarkan ID
+    
     public function getRoleById($roleId) {
         $sql = "SELECT * FROM roles WHERE role = ?";
         $stmt = $this->conn->prepare($sql);
@@ -15,7 +15,7 @@ class Role_model {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_assoc(); // Kembalikan hasil sebagai array
+        return $result->fetch_assoc(); 
     }
 }
 ?>

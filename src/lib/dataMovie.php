@@ -1,14 +1,14 @@
 <?php
     include __DIR__ . '/../lib/db.php';
 
-    // Default parameters
+    
     $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
     $genre = isset($_GET['genre']) ? $conn->real_escape_string($_GET['genre']) : '';
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
-    $limit = 10; // Jumlah data per halaman
+    $limit = 10; 
     $offset = ($page - 1) * $limit;
 
-    // Query untuk mendapatkan genre unik
+    
     $genresQuery = "SELECT DISTINCT genre FROM movies";
     $genresResult = $conn->query($genresQuery);
 
@@ -16,7 +16,7 @@
         die("Error fetching genres: " . $conn->error);
     }
 
-    // Query utama dengan filter dan search
+    
     $whereClauses = [];
     if (!empty($search)) {
         $whereClauses[] = "(title LIKE '%$search%' OR description LIKE '%$search%')";
@@ -42,6 +42,6 @@
         die("Error fetching movies: " . $conn->error);
     }
 
-    // Hitung total halaman
+    
     $totalPages = ceil($totalRows / $limit);
 ?>

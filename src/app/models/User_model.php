@@ -7,7 +7,7 @@ class User_model {
         $this->conn = $conn;
     }
 
-    // Cari user berdasarkan username
+    
     public function findByUsername($username) {
         $sql = "SELECT * FROM users WHERE username = ?";
         $stmt = $this->conn->prepare($sql);
@@ -15,7 +15,7 @@ class User_model {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_assoc(); // Kembalikan hasil sebagai array
+        return $result->fetch_assoc(); 
     }
 
     public function findByEmail($email) {
@@ -29,7 +29,7 @@ class User_model {
     
     public function createUser($username, $email, $password) {
         $sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
-        $role = 2; // Default role = user
+        $role = 2; 
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sssi", $username, $email, $password, $role);
         return $stmt->execute();

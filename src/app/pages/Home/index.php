@@ -160,7 +160,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <a href="#" class="logo">Netflix</a>
         <ul class="nav-links">
@@ -171,39 +170,27 @@
         </ul>
         <a href="/auth/sign-in" class="login-btn">Login</a>
     </header>
-
-    <!-- Hero Section -->
     <div class="hero">
         <h1>Unlimited movies, TV shows, and more.</h1>
         <p>Watch anywhere. Cancel anytime.</p>
         <button>Get Started</button>
     </div>
-
-    <!-- Movie Sections -->
-    <!-- <div class="section">
-        <h2>Trending Now</h2>
-        <div class="movies">
         <?php
-            // Sambungkan ke database
             require_once __DIR__ . '/../../../lib/db.php';
-
-            // Query untuk mendapatkan data film
             $query = "SELECT title, video, image, rating, duration FROM movies";
             $result = $conn->query($query);
 
-            // Periksa apakah query berhasil
             if ($result && $result->num_rows > 0) {
                 while ($movie = $result->fetch_assoc()) {
                     echo '<div class="movie">';
                     
-                    // Pastikan gambar tersedia
+                
                     if (!empty($movie['image'])) {
                         echo '<img src="' . htmlspecialchars($movie['image']) . '" alt="Movie Image">';
                     } else {
                         echo '<img src="path/to/default-image.jpg" alt="Default Image">';
                     }
 
-                    // Tampilkan detail film
                     echo '<h2>' . htmlspecialchars($movie['title']) . '</h2>';
                     echo '<p>Rating: ' . htmlspecialchars($movie['rating']) . '/10</p>';
                     echo '<p>Duration: ' . htmlspecialchars($movie['duration']) . ' minutes</p>';
@@ -224,15 +211,14 @@
             foreach ($result as $movie) {
                 echo '<div class="movie">';
             
-                // Pastikan 'image' tersedia dan bukan null
                 if (!empty($movie['image'])) {
                     echo '<img src="' . htmlspecialchars($movie['image']) . '" width="320" height="240" alt="Movie Image">';
                 } else {
                     echo '<img src="path/to/default-image.jpg" width="320" height="240" alt="Default Image">';
                 }
                 
-                echo '<h2>' . htmlspecialchars($movie['title']) . '</h2>'; // Judul film
-                echo '<p>' . htmlspecialchars($movie['rating']) . '/10</p>'; // Rating film
+                echo '<h2>' . htmlspecialchars($movie['title']) . '</h2>'; 
+                echo '<p>' . htmlspecialchars($movie['rating']) . '/10</p>'; 
                 echo '<p>' . htmlspecialchars($movie['duration']) . ' minutes</p>';
                 echo '</div>';
             }

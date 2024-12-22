@@ -7,26 +7,26 @@
         exit();
     }
 
-    // Ambil data dari form
+    
     $username = htmlspecialchars($_POST['username'] ?? '');
     $email = htmlspecialchars($_POST['email'] ?? '');
     $password = htmlspecialchars($_POST['password'] ?? '');
 
-    // Validasi input
+    
     if (empty($username) || empty($email) || empty($password)) {
         $_SESSION['error'] = "Semua field harus diisi.";
         header("Location: /Auth/sign-up");
         exit();
     }
 
-    // Validasi format email
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Format email tidak valid.";
         header("Location: /Auth/sign-up");
         exit();
     }
 
-    // Periksa apakah username atau email sudah terdaftar
+    
     $existingUser = $this->User_model->findByUsername($username);
     $existingEmail = $this->User_model->findByEmail($email);
 
@@ -42,10 +42,10 @@
         exit();
     }
 
-    // Hash password
+    
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Simpan pengguna ke database
+    
     $isCreated = $this->User_model->createUser($username, $email, $hashedPassword);
 
     if ($isCreated) {
@@ -67,7 +67,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In / Sign Up</title>
     <link rel="stylesheet" href="../css/sign.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https:
 </head>
 <body>
     <div class="container">

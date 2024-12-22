@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . '/../../../../lib/db.php';
 
-// Ambil data dari database
 $result = $conn->query("SELECT * FROM users");
 ?>
 
@@ -30,10 +29,10 @@ $result = $conn->query("SELECT * FROM users");
 </head>
 <body>
     <div class="d-flex flex-column flex-lg-row">
-        <!-- Sidebar -->
+      
         <?php include __DIR__ . '/../sidebar.php'; ?> 
 
-        <!-- Main Content -->
+       
         <div class="content flex-grow-1 p-4">
             <h2 class="mb-4">Users Dashboard</h2>
             <a href="create.php" class="btn btn-primary mb-3">Add New User</a>

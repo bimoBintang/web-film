@@ -77,11 +77,9 @@ function handleRoute($routes) {
         }
     }
 
-    // Jika tidak ada route yang cocok, arahkan ke halaman 404
     header("HTTP/1.0 404 Not Found");
     require_once(__DIR__ . '/../app/pages/errors/404.php');
 }
 
-// Jalankan router
 handleRoute($routes);
 ?>

@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $videoName = basename($_FILES['video']['name']);
     $targetFile = $targetDir . $videoName;
 
-    // Pindahkan file yang diupload ke folder target
+    
     if (move_uploaded_file($_FILES['video']['tmp_name'], $targetFile)) {
-        // Simpan data ke database
+        
         $stmt = $conn->prepare("INSERT INTO movies (title, video) VALUES (?, ?)");
         $stmt->bind_param("ss", $title, $targetFile);
 
